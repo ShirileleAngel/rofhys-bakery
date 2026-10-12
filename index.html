@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rofhy's Bakery | Freshly Baked Goods & Custom Orders</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    :root {
+      --primary-gold: #c59b27;
+      --primary-gold-dark: #a37f1e;
+      --cream-bg: #fdfbf7;
+      --cream-card: #ffffff;
+      --charcoal: #2c2c2c;
+      --soft-border: #e8e2d5;
+      --whatsapp-green: #25D366;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Poppins', sans-serif; background-color: var(--cream-bg); color: var(--charcoal); line-height: 1.6; }
+
+    /* Header & Navigation */
+    header { background: #fff; border-bottom: 1px solid var(--soft-border); position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.03); }
+    .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; }
+    
+    /* Logo styling */
+    .logo-container { display: flex; align-items: center; gap: 15px; }
+    .logo-badge { width: 70px; height: 70px; border-radius: 50%; border: 2px solid var(--primary-gold); padding: 3px; background: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+    .logo-badge i { color: var(--primary-gold); font-size: 1.2rem; margin-bottom: 2px; }
+    .logo-badge-text { font-family: 'Great Vibes', cursive; font-size: 0.95rem; color: var(--charcoal); font-weight: bold; line-height: 1; }
+    .logo-title { font-family: 'Great Vibes', cursive; font-size: 2.2rem; color: var(--charcoal); line-height: 1; }
+    .logo-sub { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--primary-gold); font-weight: 600; }
+
+    .nav-links { display: flex; gap: 25px; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--charcoal); font-weight: 500; transition: color 0.3s; }
+    .nav-links a:hover { color: var(--primary-gold); }
+
+    /* Announcement Banner */
+    .deposit-banner { background: var(--primary-gold); color: #fff; text-align: center; padding: 10px; font-weight: 600; font-size: 0.95rem; letter-spacing: 0.5px; }
+
+    /* Hero Section */
+    .hero { text-align: center; padding: 60px 20px; background: linear-gradient(rgba(253,251,247,0.92), rgba(253,251,247,0.92)), url('images/gold-butterfly-cake.jpg') center/cover; }
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: 2.8rem; color: var(--charcoal); margin-bottom: 15px; }
+    .hero p { font-size: 1.1rem; color: #555; max-width: 600px; margin: 0 auto 25px; }
+    .btn-primary { display: inline-block; background: var(--primary-gold); color: #fff; padding: 12px 30px; border-radius: 30px; text-decoration: none; font-weight: 600; transition: background 0.3s; border: none; cursor: pointer; }
+    .btn-primary:hover { background: var(--primary-gold-dark); }
+
+    /* Section Title */
+    .section-title { text-align: center; margin: 50px 0 10px; font-family: 'Playfair Display', serif; font-size: 2.2rem; }
+    .section-subtitle { text-align: center; color: #777; margin-bottom: 35px; font-size: 0.95rem; }
+
+    /* Menu Grid */
+    .menu-container { max-width: 1200px; margin: 0 auto; padding: 0 20px 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+
+    .card { background: var(--cream-card); border-radius: 12px; overflow: hidden; border: 1px solid var(--soft-border); box-shadow: 0 4px 15px rgba(0,0,0,0.04); transition: transform 0.3s; display: flex; flex-direction: column; }
+    .card:hover { transform: translateY(-5px); }
+    .card-img { width: 100%; height: 260px; object-fit: cover; background-color: #f4f0e6; }
+    .card-body { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
+    .card-title { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 8px; }
+    .card-desc { font-size: 0.88rem; color: #666; margin-bottom: 15px; }
+
+    /* Custom Request Card styling */
+    .custom-request-box { background: var(--cream-bg); border: 2px dashed var(--primary-gold); border-radius: 8px; padding: 20px; text-align: center; margin-bottom: 15px; }
+    .custom-request-box i { font-size: 2rem; color: var(--primary-gold); margin-bottom: 10px; }
+    .custom-request-box p { font-size: 0.9rem; color: #444; }
+
+    /* Pricing Table inside Cards */
+    .price-list { width: 100%; border-collapse: collapse; margin-bottom: 15px; font-size: 0.9rem; }
+    .price-list th, .price-list td { padding: 6px 10px; border-bottom: 1px dashed var(--soft-border); text-align: left; }
+    .price-list th { color: var(--primary-gold-dark); font-weight: 600; }
+    .price-list td:last-child { text-align: right; font-weight: 600; color: var(--charcoal); }
+
+    .btn-whatsapp { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; background: var(--whatsapp-green); color: #fff; padding: 10px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 0.9rem; border: none; cursor: pointer; margin-top: auto; }
+    .btn-whatsapp:hover { background: #1eb954; }
+
+    /* Buttercream Cakes Section */
+    .custom-cake-section { background: #fff; padding: 60px 20px; border-top: 1px solid var(--soft-border); border-bottom: 1px solid var(--soft-border); }
+    .cake-box { max-width: 1200px; margin: 0 auto; text-align: center; }
+    .cake-box h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; margin-bottom: 10px; }
+    .starting-price { font-size: 1.3rem; color: var(--primary-gold-dark); font-weight: 700; margin-bottom: 30px; }
+
+    .cake-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-bottom: 35px; }
+    .cake-card { background: var(--cream-bg); border-radius: 12px; overflow: hidden; border: 1px solid var(--soft-border); text-align: left; }
+    .cake-card img { width: 100%; height: 320px; object-fit: cover; }
+    .cake-card-body { padding: 18px; }
+    .cake-card-title { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 600; margin-bottom: 5px; }
+    .cake-card-desc { font-size: 0.85rem; color: #666; }
+
+    /* Footer */
+    footer { background: var(--charcoal); color: #fff; text-align: center; padding: 40px 20px; margin-top: 60px; }
+    footer p { font-size: 0.9rem; color: #ccc; margin-top: 10px; }
+  </style>
+</head>
+<body>
+
+  <!-- Announcement Banner -->
+  <div class="deposit-banner">
+    <i class="fa-solid fa-circle-info"></i> Please Note: 50% Deposit Secures Your Order!
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="nav-container">
+      <div class="logo-container">
+        <div class="logo-badge">
+          <i class="fa-solid fa-wheat-awn"></i>
+          <span class="logo-badge-text">Rofhy's</span>
+        </div>
+        <div>
+          <div class="logo-title">Rofhy's Bakery</div>
+          <div class="logo-sub">Baked to Perfection • Fresh From Our Heart</div>
+        </div>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#menu">Menu & Price List</a></li>
+        <li><a href="#custom-cakes">Buttercream Cakes</a></li>
+        <li><a href="https://wa.me/27672196266" target="_blank">Contact Us</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Fresh From Our Heart To Yours</h1>
+    <p>Handcrafted scones, biscuits, snowballs, and luxury celebration cakes baked daily with premium ingredients.</p>
+    <a href="https://wa.me/27672196266?text=Hi%20Rofhy's%20Bakery,%20I'd%20like%20to%20place%20an%20order" class="btn-primary" target="_blank">
+      <i class="fa-brands fa-whatsapp"></i> Order on WhatsApp
+    </a>
+  </section>
+
+  <!-- Menu Section -->
+  <h2 class="section-title" id="menu">Our Bakery Menu & Price List</h2>
+  <p class="section-subtitle">Freshly baked in buckets, boxes, and custom orders</p>
+
+  <div class="menu-container">
+
+    <!-- Bucket Scones Card -->
+    <div class="card">
+      <img src="images/bucket-scones.jpg" alt="Bucket of Fresh Scones" class="card-img" onerror="this.src='https://via.placeholder.com/400x260?text=Bucket+of+Scones'">
+      <div class="card-body">
+        <h3 class="card-title">Fresh Homemade Scones</h3>
+        <p class="card-desc">Golden, buttery, and flaky homemade scones prepared fresh in bucket sizes.</p>
+        <table class="price-list">
+          <tr><th>Flavor</th><th>Size</th><th>Price</th></tr>
+          <tr><td>Plain Scones</td><td>5L / 10L / 20L</td><td>R280 / R400 / R670</td></tr>
+          <tr><td>Custard Scones</td><td>5L / 10L / 20L</td><td>R320 / R420 / R700</td></tr>
+          <tr><td>Coconut Scones</td><td>5L / 10L / 20L</td><td>R320 / R420 / R700</td></tr>
+          <tr><td>Blueberry Scones</td><td>5L / 10L / 20L</td><td>R350 / R450 / R750</td></tr>
+          <tr><td>Small Box Scones</td><td>Box</td><td>R150</td></tr>
+        </table>
+        <a href="https://wa.me/27672196266?text=Hi%20Rofhy's%20Bakery,%20I%20want%20to%20order%20Scones" class="btn-whatsapp" target="_blank">
+          <i class="fa-brands fa-whatsapp"></i> Order Scones
+        </a>
+      </div>
+    </div>
+
+    <!-- Piped Biscuits Card -->
+    <div class="card">
+      <img src="images/piped-biscuits.jpg" alt="Assorted Handcrafted Biscuits" class="card-img" onerror="this.src='https://via.placeholder.com/400x260?text=Assorted+Biscuits'">
+      <div class="card-body">
+        <h3 class="card-title">Handcrafted Biscuits</h3>
+        <p class="card-desc">Delicious traditional melted butter biscuits, piped cookies, and chocolate treats.</p>
+        <table class="price-list">
+          <tr><th>Type</th><th>Sizes</th><th>Price Range</th></tr>
+          <tr><td>Ginger</td><td>2.5L - 20L</td><td>R180 - R800</td></tr>
+          <tr><td>Roman Creams</td><td>2.5L - 20L</td><td>R200 - R1000</td></tr>
+          <tr><td>Melting Moments</td><td>2.5L - 20L</td><td>R200 - R900</td></tr>
+          <tr><td>Eat Summore</td><td>2.5L - 20L</td><td>R180 - R900</td></tr>
+          <tr><td>Assorted Bucket</td><td>5L / 10L / 20L</td><td>R560 / R670 / R1400</td></tr>
+          <tr><td>Small Box Assorted</td><td>Box</td><td>R450</td></tr>
+        </table>
+        <a href="https://wa.me/27672196266?text=Hi%20Rofhy's%20Bakery,%20I%20want%20to%20order%20Biscuits" class="btn-whatsapp" target="_blank">
+          <i class="fa-brands fa-whatsapp"></i> Order Biscuits
+        </a>
+      </div>
+    </div>
+
+    <!-- Snowballs Card -->
+    <div class="card">
+      <img src="images/red-velvet-snowballs.jpg" alt="Coconut Red Velvet Snowballs" class="card-img" onerror="this.src='https://via.placeholder.com/400x260?text=Coconut+Snowballs'">
+      <div class="card-body">
+        <h3 class="card-title">Coconut Snowballs</h3>
+        <p class="card-desc">Soft, fluffy red velvet and strawberry snowballs rolled in fine coconut flakes.</p>
+        <table class="price-list">
+          <tr><th>Size</th><th>Volume</th><th>Price</th></tr>
+          <tr><td>5 Litre Bucket</td><td>5L</td><td>R250</td></tr>
+          <tr><td>10 Litre Bucket</td><td>10L</td><td>R400</td></tr>
+          <tr><td>20 Litre Bucket</td><td>20L</td><td>R750</td></tr>
+        </table>
+        <a href="https://wa.me/27672196266?text=Hi%20Rofhy's%20Bakery,%20I%20want%20to%20order%20Coconut%20Snowballs" class="btn-whatsapp" target="_blank">
+          <i class="fa-brands fa-whatsapp"></i> Order Snowballs
+        </a>
+      </div>
+    </div>
+
+    <!-- Strawberry Cream Snowballs -->
+    <div class="card">
+      <img src="images/strawberry-cream-cakes.jpg" alt="Strawberry Cream Snowball Cakes" class="card-img" onerror="this.src='https://via.placeholder.com/400x260?text=Strawberry+Cream+Snowballs'">
+      <div class="card-body">
+        <h3 class="card-title">Strawberry Cream Snowballs</h3>
+        <p class="card-desc">Fresh coconut snowballs stuffed with whipped cream and topped with juicy strawberries.</p>
+        <table class="price-list">
+          <tr><th>Pack Size</th><th>Price</th></tr>
+          <tr><td>6-Pack Platter</td><td>R180</td></tr>
+          <tr><td>12-Pack Platter</td><td>R320</td></tr>
+        </table>
+        <a href="https://wa.me/27672196266?text=Hi%20Rofhy's%20Bakery,%20I%20want%20to%20order%20Strawberry%20Cream%20Snowballs" class="btn-whatsapp" target="_blank">
+          <i class="fa-brands fa-whatsapp"></i> Order Strawberry Cream
+        </a>
+      </div>
+    </div>
+
+    <!-- Gourmet Cupcakes -->
+    <div class="card">
+      <img src="images/floral-cupcakes.jpg" alt="Artisanal Floral Cupcakes" class="card-img" onerror="this.src='https://via.placeholder.com/400x260?text=Gourmet+Cupcakes'">
+      <div class="card-body">
+        <h3 class="card-title">Floral Gourmet Cupcakes</h3>
+        <p class="card-desc">Decadent vanilla cupcakes decorated with piped buttercream, edible pansy flowers, and dried citrus.</p>
+        <table class="price-list">
+          <tr><th>Box Size</th><th>Price</th></tr>
+          <tr><td>Box of 12 Cupcakes</td><td>R240</td></tr>
+          <tr><td>Box of 24 Cupcakes</td><td>R450</td></tr>
+        </table>
+        <a href="https://wa.me/27672196266?text=Hi%20Rofhy's%20Bakery,%20I%20want%20to%20order%20Gourmet%20Cupcakes" class="btn-whatsapp" target="_blank">
+          <i class="fa-brands fa-whatsapp"></i> Order Cupcakes
+        </a>
+      </div>
+    </div>
+
+    <!-- Custom Orders & Special Requests Card -->
+    <div class="card">
+      <div class="card-body" style="justify-content: center;">
+        <h3 class="card-title" style="text-align: center; margin-bottom: 12px;">Custom & Special Requests</h3>
+        <div class="custom-request-box">
+          <i class="fa-solid fa-wand-magic-sparkles"></i>
+          <p><strong>We bake many more items!</strong></p>
+          <p style="margin-top: 5px;">If you have a custom idea, specific recipe, or specialized baked goods in mind, we can bake whatever you want to perfection.</p>
+        </div>
+        <a href="https://wa.me/27672196266?text=Hi%20Rofhy's%20Bakery,%20I%20have%20a%20custom%20baking%20request" class="btn-whatsapp" target="_blank">
+          <i class="fa-brands fa-whatsapp"></i> Send Custom Request
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Buttercream Custom Cakes Section -->
+  <section class="custom-cake-section" id="custom-cakes">
+    <div class="cake-box">
+      <h2>Custom Buttercream Celebration Cakes</h2>
+      <p class="section-subtitle">Heart-shaped designs, gold butterfly accents, sprinkles, and luxury edible foil</p>
+      <div class="starting-price">Buttercream Cakes Starting From R250</div>
+
+      <!-- Visible Cake Gallery -->
+      <div class="cake-gallery">
+        
+        <div class="cake-card">
+          <img src="images/walnut-heart-cake.jpg" alt="Walnut Heart Naked Cake" onerror="this.src='https://via.placeholder.com/300x320?text=Walnut+Heart+Cake'">
+          <div class="cake-card-body">
+            <div class="cake-card-title">Walnut Heart Naked Cake</div>
+            <div class="cake-card-desc">Heart-shaped naked vanilla cake with cream piping, toasted crushed walnuts, and a gold butterfly topper.</div>
+          </div>
+        </div>
+
+        <div class="cake-card">
+          <img src="images/sprinkle-heart-cake.jpg" alt="Rainbow Sprinkle Birthday Cake" onerror="this.src='https://via.placeholder.com/300x320?text=Rainbow+Sprinkle+Cake'">
+          <div class="cake-card-body">
+            <div class="cake-card-title">Rainbow Sprinkle Heart Cake</div>
+            <div class="cake-card-desc">Fun celebration cake covered in vibrant rainbow sprinkles with an acrylic "Happy Birthday" cake topper.</div>
+          </div>
+        </div>
+
+        <div class="cake-card">
+          <img src="images/gold-butterfly-cake.jpg" alt="Gold Butterfly Birthday Cake" onerror="this.src='https://via.placeholder.com/300x320?text=Gold+Butterfly+Cake'">
+          <div class="cake-card-body">
+            <div class="cake-card-title">Luxury Gold Butterfly Tier</div>
+            <div class="cake-card-desc">Textured white buttercream cake decorated with 3D gold butterflies, edible gold foil, and sugar pearls.</div>
+          </div>
+        </div>
+
+      </div>
+
+      <a href="https://wa.me/27672196266?text=Hi%20Rofhy's%20Bakery,%20I'd%20like%20a%20quote%20for%20a%20custom%20buttercream%20cake" class="btn-primary" target="_blank">
+        <i class="fa-brands fa-whatsapp"></i> Request a Custom Cake Quote
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <h3>Rofhy's Bakery</h3>
+    <p>Baked to Perfection • Fresh From Our Heart to Yours</p>
+    <p><i class="fa-solid fa-phone"></i> WhatsApp: 067 219 6266</p>
+    <p style="margin-top:20px; font-size:0.8rem; color:#888;">&copy; 2026 Rofhy's Bakery. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
